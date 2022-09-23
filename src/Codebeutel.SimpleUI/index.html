@@ -34,6 +34,13 @@
 <body>
 
   <h1>Codebeutel</h1>
+  <div class="toggleContainer">
+    <input type="radio" id="proposeDispenser" name="clickAction" value="proposeDispenser"/>
+    <label for="proposeDispenser">Neuen Spender vorschlagen</label>
+    <input type="radio" id="newDispenser" name="clickAction" value="newDispenser"/>
+    <label for="newDispenser">Neuen Spender melden</label>
+  </div>
+</div>
 
   <div id="map"></div>
 
@@ -52,6 +59,34 @@
     popupAnchor: [-3, -76],
     shadowSize: [68, 95],
     shadowAnchor: [22, 94]
+    });
+
+    var orangeIcon = L.icon({
+    iconUrl: './img/marker_orange.png',
+    iconSize:     [25, 41], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var redIcon = L.icon({
+      iconUrl: './img/marker_red.png',
+
+      iconSize:     [25, 41],
+      shadowSize:   [0, 0],
+      iconAnchor:   [12, 41],
+      shadowAnchor: [4, 62], 
+      popupAnchor:  [-3, -76]
+    });
+
+    var greenIcon = L.icon({
+      iconUrl: './img/marker_green.png',
+      iconSize:     [25, 41],
+      shadowSize:   [0, 0],
+      iconAnchor:   [12, 41],
+      shadowAnchor: [4, 62],  
+      popupAnchor:  [-3, -76] 
     });
 
     var doggyplaces = L.layerGroup()
@@ -77,6 +112,26 @@
     L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
+
+
+    map.on('contextmenu', function(e){
+      var coord = e.latlng.toString().split(',');
+            let lat = coord[0].split('(');
+            let lng = coord[1].split(')');
+      console.log('it works' + coord)
+      var lolPopup = L.popup()
+      .setLatLng([lat[1], lng[0]])
+      .setContent("<div id='creationPopup'><div><button id='proposeDispender'> Spender vorschlagen </button> </div><div><button id='newDispender'> Neuen Spender anlegen </button></div>")
+      .openOn(map);
+      document.getElementById('proposeDispender').addEventListener('click', () => {
+        let proposeMarker = L.marker([lat[1], lng[0]], {icon: orangeIcon});
+        proposeMarker.addTo(proposedLocations)
+      });
+      document.getElementById('newDispender').addEventListener('click', () => {
+        let dispenderMarker = L.marker([lat[1], lng[0]], {icon: greenIcon});
+        dispenderMarker.addTo(newLocations);
+      });
+    });
 
 
 </script>
