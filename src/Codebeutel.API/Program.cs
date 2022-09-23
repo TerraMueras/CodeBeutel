@@ -1,5 +1,4 @@
 using Codebeutel.API.Data;
-using Codebeutel.API.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CodebeutelContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
+
+var corsPolicyName = "AllowAll";
+builder.Services.AddCors(o => o.AddPolicy(corsPolicyName, builder =>
 {
     builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
 }));
@@ -46,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();
+
+app.UseCors(corsPolicyName);
 
 app.UseAuthorization();
 
