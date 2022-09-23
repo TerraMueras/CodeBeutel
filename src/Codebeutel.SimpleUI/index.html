@@ -1,93 +1,141 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
 
-  <title>Hello, world!</title>
+    <link rel="stylesheet" href="./css/MarkerCluster.css" />
+    <link rel="stylesheet" href="./css/MarkerCluster.Default.css" />
 
-  <meta charset="UTF-8" />
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+    integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+    crossorigin=""></script>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
 
-  <meta name="description" content="" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="./js/leaflet.markercluster.js"></script>
+    <script src="./js/currentLocation.js"></script>
+    <script src="./js/kml.js"></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
-  integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-  crossorigin=""/>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Codebeutel</h1>
+    <div>
+        <button type='button' class='btn btn-primary' onclick="zoomToCurrentPosition()">zoom to current location</button>
+    </div>
+    <div id="map"></div>
 
-  <link rel="stylesheet" href="./css/MarkerCluster.css" />
-  <link rel="stylesheet" href="./css/MarkerCluster.Default.css" />
-
-   <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
- integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
- crossorigin=""></script>
-
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-
- <link rel="stylesheet" href="css/font-awesome.min.css">
- <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-
- <script src="./js/leaflet.markercluster.js"></script>
- <script src="./js/currentLocation.js"></script>
- <script src="./js/kml.js"></script>
-</head>
-
-<body>
-
-  <h1>Codebeutel</h1>
-  <div id="map"></div>
-
-</body>
-<script> 
-    var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    zoomToCurrentPosition();
-
-    var myIcon = L.icon({
-    iconUrl: 'img/trashcan-icon.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowSize: [68, 95],
-    shadowAnchor: [22, 94]
-    });
-
-    // hundefreundliche orte
-    var doggyplaces = L.layerGroup()
-    doggyplaces.addTo(map)
-
-    // demo, do this for each API GET
-    var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
-    var polygon = L.polygon(somepoly, {color: 'green'})
-    doggyplaces.addLayer(polygon)
-
-    // get from API, foreach API GET
-    var proposedLocations = L.layerGroup()
-    var newLocations = L.layerGroup()
-
-    // kml imports
-	var papier = new L.KML('muenster_papier.kml', {async: true}).addTo(map);
-    var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
-    
-    // Control layers
-	L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
-
-    L.easyButton('fa-crosshairs fa-lg', function(btn,map){
-        zoomToCurrentPosition()
-    }).addTo(map)
-
-</script>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script> 
+      var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+      }).addTo(map);
+  
+      zoomToCurrentPosition();
+  
+      var myIcon = L.icon({
+      iconUrl: 'img/trashcan-icon.png',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94]
+      });
+  
+      var orangeIcon = L.icon({
+      iconUrl: './img/marker_orange.png',
+      iconSize:     [25, 41], // size of the icon
+      shadowSize:   [0, 0], // size of the shadow
+      iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      });
+  
+      var redIcon = L.icon({
+        iconUrl: './img/marker_red.png',
+  
+        iconSize:     [25, 41],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62], 
+        popupAnchor:  [-3, -76]
+      });
+  
+      var greenIcon = L.icon({
+        iconUrl: './img/marker_green.png',
+        iconSize:     [25, 41],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+  
+      var doggyplaces = L.layerGroup()
+      doggyplaces.addTo(map)
+  
+      // demo, do this for each API GET
+      var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
+      var polygon = L.polygon(somepoly, {color: 'green'})
+      doggyplaces.addLayer(polygon)
+  
+      // get from API, foreach API GET
+      var proposedLocations = L.layerGroup()
+      var newLocations = L.layerGroup()
+  
+      // kml imports
+    var papier = new L.KML('muenster_papier.kml', {async: true}).addTo(map);
+      var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
+      
+      // Control layers
+    L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
+      L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
+      L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
+      L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
+      L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
+  
+      L.easyButton('fa-crosshairs fa-lg', function(btn,map){
+          alert("hi")
+      }).addTo(map)
+  
+      map.on('contextmenu', function(e){
+        var coord = e.latlng.toString().split(',');
+              let lat = coord[0].split('(');
+              let lng = coord[1].split(')');
+        var lolPopup = L.popup()
+        .setLatLng([lat[1], lng[0]])
+        .setContent("<div id='creationPopup'><div><button id='proposeDispender' type='button' class='btn btn-primary'> Spender vorschlagen </button> </div><div><button id='newDispender' type='button' class='btn btn-primary'> Neuen Spender anlegen </button></div>")
+        .openOn(map);
+        document.getElementById('proposeDispender').addEventListener('click', () => {
+          let proposeMarker = L.marker([lat[1], lng[0]], {icon: orangeIcon});
+          proposeMarker.addTo(proposedLocations)
+        });
+        document.getElementById('newDispender').addEventListener('click', () => {
+          let dispenderMarker = L.marker([lat[1], lng[0]], {icon: greenIcon});
+          dispenderMarker.addTo(newLocations);
+        });
+      });
+  
+  
+  </script>
+  </body>
 </html>
