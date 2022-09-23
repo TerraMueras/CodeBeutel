@@ -14,6 +14,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CodebeutelContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
+{
+    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
