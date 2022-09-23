@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
+
+# Build dotnet app
+COPY ./src/Codebeutel.API ./Codebeutel.API
+RUN dotnet publish Codebeutel.API/Codebeutel.API.csproj -c Debug -o out --no-self-contained
+
+# Move to lighter container
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as prod-env
+COPY --from=build-env /out .
+ENTRYPOINT [ "dotnet", "/Codebeutel.API.dll" ]
+
+# vim: ft=dockerfile

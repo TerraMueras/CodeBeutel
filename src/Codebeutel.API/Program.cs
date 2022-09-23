@@ -1,3 +1,7 @@
+using Codebeutel.API.Data;
+using Codebeutel.API.Data.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<CodebeutelContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -16,7 +23,32 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+/* // Create database if not exists */
+using (var scope = app.Services.CreateAsyncScope())
+{
+    var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
+    await ctx.Database.MigrateAsync();
+    await ctx.Dispensers.AddRangeAsync(new[] {
+            new Dispenser()
+            {
+                Latitude = 1,
+                Longitude = 2,
+            },
+        });
+    await ctx.SaveChangesAsync();
+}
+
+
+if (app.Environment.IsDevelopment())
+{
+    using (var scope = app.Services.CreateAsyncScope())
+    {
+        var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
+        new InitData(ctx);
+    }
+} 
+
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
