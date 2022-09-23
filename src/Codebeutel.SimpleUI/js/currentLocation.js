@@ -7,13 +7,13 @@ const options = {
 function success(pos) {
   const crd = pos.coords;
   let currentPos = [crd.latitude, crd.longitude];
-  map.setView(currentPos, 16);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "© OpenStreetMap",
-  }).addTo(map);
+  map.setView(currentPos, 16)
 }
 
 function error(err) {
   alert(`ERROR(${err.code}): ${err.message}`);
+}
+
+function zoomToCurrentPosition(){
+    navigator.geolocation.getCurrentPosition(success, error, options);
 }

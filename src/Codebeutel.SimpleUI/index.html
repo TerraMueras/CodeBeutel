@@ -30,7 +30,9 @@
 <body>
 
   <h1>Codebeutel</h1>
-
+    <div>
+        <button onclick="zoomToCurrentPosition()">zoom to current location</button>
+    </div>
   <div id="map"></div>
 
 </body>
@@ -40,8 +42,8 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
-    
-    navigator.geolocation.getCurrentPosition(success, error, options);
+
+    zoomToCurrentPosition();
 
     var myIcon = L.icon({
     iconUrl: 'img/trashcan-icon.png',
@@ -51,7 +53,6 @@
     shadowSize: [68, 95],
     shadowAnchor: [22, 94]
     });
-
     var papier = new L.KML('muenster_papier.kml', {async: true, href: 'img/trashcan-icon.png'})
 		.addTo(map);
 	// L.control.layers({}, {'Papier': papier}, {collapsed: false}).addTo(map);
