@@ -28,14 +28,6 @@ using (var scope = app.Services.CreateAsyncScope())
 {
     var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
     await ctx.Database.MigrateAsync();
-    await ctx.Dispensers.AddRangeAsync(new[] {
-            new Dispenser()
-            {
-                Latitude = 1,
-                Longitude = 2,
-            },
-        });
-    await ctx.SaveChangesAsync();
 }
 
 
@@ -46,7 +38,7 @@ if (app.Environment.IsDevelopment())
         var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
         new InitData(ctx);
     }
-} 
+}
 
 //app.UseHttpsRedirection();
 

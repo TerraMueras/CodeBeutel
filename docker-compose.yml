@@ -24,3 +24,5 @@ services:
       dockerfile: ./build/Dockerfile-api
     ports:
       - 8081:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
