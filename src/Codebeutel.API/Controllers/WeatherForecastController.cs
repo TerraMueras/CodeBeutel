@@ -1,3 +1,4 @@
+using Codebeutel.API.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Codebeutel.API.Controllers;
