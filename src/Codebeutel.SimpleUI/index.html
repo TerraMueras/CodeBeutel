@@ -34,9 +34,7 @@
   </head>
   <body>
     <h1>Codebeutel</h1>
-    <div>
-        <button type='button' class='btn btn-primary' onclick="zoomToCurrentPosition()">zoom to current location</button>
-    </div>
+    
     <div id="map"></div>
 
     <!-- Optional JavaScript -->
@@ -114,24 +112,21 @@
       L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
   
       L.easyButton('fa-crosshairs fa-lg', function(btn,map){
-          alert("hi")
+          zoomToCurrentPosition();
       }).addTo(map)
   
       map.on('contextmenu', function(e){
-        var coord = e.latlng.toString().split(',');
-              let lat = coord[0].split('(');
-              let lng = coord[1].split(')');
         var lolPopup = L.popup()
-        .setLatLng([lat[1], lng[0]])
+        .setLatLng(e.latlng)
         .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
         .openOn(map);
         document.getElementById('proposeDispender').addEventListener('click', () => {
-          let proposeMarker = L.marker([lat[1], lng[0]], {icon: orangeIcon});
+          let proposeMarker = L.marker(e.latlng, {icon: orangeIcon});
           proposeMarker.addTo(proposedLocations)
           lolPopup.remove()
         });
         document.getElementById('newDispender').addEventListener('click', () => {
-          let dispenderMarker = L.marker([lat[1], lng[0]], {icon: greenIcon});
+          let dispenderMarker = L.marker(e.latlng, {icon: greenIcon});
           dispenderMarker.addTo(newLocations);
           lolPopup.remove()
         });
