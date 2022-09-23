@@ -26,8 +26,13 @@
  integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
  crossorigin=""></script>
 
- <script src="./js/leaflet.markercluster.js"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
 
+ <link rel="stylesheet" href="css/font-awesome.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
+ <script src="./js/leaflet.markercluster.js"></script>
+ <script src="./js/currentLocation.js"></script>
  <script src="./js/kml.js"></script>
 </head>
 
@@ -41,7 +46,9 @@
     <label for="newDispenser">Neuen Spender melden</label>
   </div>
 </div>
-
+    <div>
+        <button onclick="zoomToCurrentPosition()">zoom to current location</button>
+    </div>
   <div id="map"></div>
 
 </body>
@@ -51,6 +58,8 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    zoomToCurrentPosition();
 
     var myIcon = L.icon({
     iconUrl: 'img/trashcan-icon.png',
@@ -90,22 +99,21 @@
     });
 
     var doggyplaces = L.layerGroup()
-    var spender = L.layerGroup()
-    var proposedLocations = L.layerGroup()
-    var newLocations = L.layerGroup()
+    doggyplaces.addTo(map)
+
+    // demo, do this for each API GET
     var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
     var polygon = L.polygon(somepoly, {color: 'green'})
     doggyplaces.addLayer(polygon)
-    doggyplaces.addTo(map)
-    
-    var markers = L.markerClusterGroup();
-	var papier = new L.KML('muenster_papier.kml', {async: true})
-		.on('loaded', function (e) {
-			map.fitBounds(e.target.getBounds());
-		})
-		.addTo(map);
 
+    // get from API, foreach API GET
+    var proposedLocations = L.layerGroup()
+    var newLocations = L.layerGroup()
+
+    // kml imports
+	var papier = new L.KML('muenster_papier.kml', {async: true}).addTo(map);
     var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
+    
     // Control layers
 	L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
@@ -113,6 +121,9 @@
     L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
 
+    L.easyButton('fa-crosshairs fa-lg', function(btn,map){
+        alert("hi")
+    }).addTo(map)
 
     map.on('contextmenu', function(e){
       var coord = e.latlng.toString().split(',');
