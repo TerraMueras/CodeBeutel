@@ -29,7 +29,17 @@ if (app.Environment.IsDevelopment())
 /*     await ctx.Database.EnsureCreatedAsync(); */
 /* } */
 
-app.UseHttpsRedirection();
+
+if (app.Environment.IsDevelopment())
+{
+    using (var scope = app.Services.CreateAsyncScope())
+    {
+        var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
+        new InitData(ctx);
+    }
+} 
+
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
