@@ -32,14 +32,16 @@
  <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
  <script src="./js/leaflet.markercluster.js"></script>
-
+ <script src="./js/currentLocation.js"></script>
  <script src="./js/kml.js"></script>
 </head>
 
 <body>
 
   <h1>Codebeutel</h1>
-
+    <div>
+        <button onclick="zoomToCurrentPosition()">zoom to current location</button>
+    </div>
   <div id="map"></div>
 
 </body>
@@ -49,6 +51,8 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    zoomToCurrentPosition();
 
     var myIcon = L.icon({
     iconUrl: 'img/trashcan-icon.png',
