@@ -1,7 +1,12 @@
-namespace Codebeutel.API;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Codebeutel.API.Data.Models;
 
 public class WeatherForecast
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int ID { get; set; }
+
     public DateTime Date { get; set; }
 
     public int TemperatureC { get; set; }
