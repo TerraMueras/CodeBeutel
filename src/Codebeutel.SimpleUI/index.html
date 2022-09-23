@@ -23,7 +23,8 @@
  integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
  crossorigin=""></script>
 
- <script src="./js/kml.js"></script>
+ <script src="./js/kml.js"></script> 
+ <script src="./js/currentLocation.js"></script>
 </head>
 
 <body>
@@ -39,6 +40,8 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
+    
+    navigator.geolocation.getCurrentPosition(success, error, options);
 
     var myIcon = L.icon({
     iconUrl: 'img/trashcan-icon.png',
@@ -50,9 +53,6 @@
     });
 
     var papier = new L.KML('muenster_papier.kml', {async: true, href: 'img/trashcan-icon.png'})
-		.on('loaded', function (e) {
-			map.fitBounds(e.target.getBounds());
-		})
 		.addTo(map);
 	// L.control.layers({}, {'Papier': papier}, {collapsed: false}).addTo(map);
 </script>
