@@ -6,9 +6,11 @@
   "dependencies": {
     "@nativescript/core": "~8.3.0",
     "@nativescript/theme": "~3.0.2",
+    "npm": "^8.19.2",
     "svelte-native": "~1.0.0"
   },
   "devDependencies": {
+    "@nativescript/preview-cli": "1.0.1",
     "@nativescript/types": "~8.3.0",
     "@nativescript/webpack": "~5.0.6",
     "svelte": "~3.44.0",
