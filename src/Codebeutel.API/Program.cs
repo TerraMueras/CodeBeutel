@@ -33,6 +33,7 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateAsyncScope())
 {
     var ctx = scope.ServiceProvider.GetRequiredService<CodebeutelContext>();
+    await ctx.Database.EnsureDeletedAsync();
     await ctx.Database.MigrateAsync();
 }
 
