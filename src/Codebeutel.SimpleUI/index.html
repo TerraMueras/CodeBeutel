@@ -39,9 +39,6 @@
 <body>
 
   <h1>Codebeutel</h1>
-    <div>
-        <button onclick="zoomToCurrentPosition()">zoom to current location</button>
-    </div>
   <div id="map"></div>
 
 </body>
@@ -88,7 +85,7 @@
     L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
 
     L.easyButton('fa-crosshairs fa-lg', function(btn,map){
-        alert("hi")
+        zoomToCurrentPosition()
     }).addTo(map)
 
 </script>
