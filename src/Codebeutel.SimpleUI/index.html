@@ -22,6 +22,8 @@
  <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
  integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
  crossorigin=""></script>
+
+ <script src="./js/kml.js"></script>
 </head>
 
 <body>
@@ -37,6 +39,22 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    var myIcon = L.icon({
+    iconUrl: 'img/trashcan-icon.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+    });
+
+    var papier = new L.KML('muenster_papier.kml', {async: true, href: 'img/trashcan-icon.png'})
+		.on('loaded', function (e) {
+			map.fitBounds(e.target.getBounds());
+		})
+		.addTo(map);
+	// L.control.layers({}, {'Papier': papier}, {collapsed: false}).addTo(map);
 </script>
 
 </html>
