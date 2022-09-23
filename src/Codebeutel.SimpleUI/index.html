@@ -123,15 +123,17 @@
               let lng = coord[1].split(')');
         var lolPopup = L.popup()
         .setLatLng([lat[1], lng[0]])
-        .setContent("<div id='creationPopup'><div><button id='proposeDispender' type='button' class='btn btn-primary'> Spender vorschlagen </button> </div><div><button id='newDispender' type='button' class='btn btn-primary'> Neuen Spender anlegen </button></div>")
+        .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
         .openOn(map);
         document.getElementById('proposeDispender').addEventListener('click', () => {
           let proposeMarker = L.marker([lat[1], lng[0]], {icon: orangeIcon});
           proposeMarker.addTo(proposedLocations)
+          lolPopup.remove()
         });
         document.getElementById('newDispender').addEventListener('click', () => {
           let dispenderMarker = L.marker([lat[1], lng[0]], {icon: greenIcon});
           dispenderMarker.addTo(newLocations);
+          lolPopup.remove()
         });
       });
   
