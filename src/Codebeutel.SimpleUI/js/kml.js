@@ -449,7 +449,7 @@ L.KMLIcon = L.Icon.extend({
 
 L.KMLMarker = L.Marker.extend({
 	options: {
-		icon: new L.KMLIcon.Default()
+		icon: new L.KMLIcon.Default,
 	}
 });
 
