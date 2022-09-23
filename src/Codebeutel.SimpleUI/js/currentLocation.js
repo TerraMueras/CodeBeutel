@@ -7,7 +7,7 @@ const options = {
 function success(pos) {
   const crd = pos.coords;
   let currentPos = [crd.latitude, crd.longitude];
-  map.setView(currentPos, 16)
+  map.setView(currentPos, 18)
 }
 
 function error(err) {
