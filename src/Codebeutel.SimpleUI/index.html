@@ -72,9 +72,9 @@
 
     var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
     // Control layers
-	L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
+    L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
+	  L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
     L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
 
