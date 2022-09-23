@@ -27,14 +27,16 @@
  crossorigin=""></script>
 
  <script src="./js/leaflet.markercluster.js"></script>
-
+ <script src="./js/currentLocation.js"></script>
  <script src="./js/kml.js"></script>
 </head>
 
 <body>
 
   <h1>Codebeutel</h1>
-
+    <div>
+        <button onclick="zoomToCurrentPosition()">zoom to current location</button>
+    </div>
   <div id="map"></div>
 
 </body>
@@ -44,6 +46,8 @@
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    zoomToCurrentPosition();
 
     var myIcon = L.icon({
     iconUrl: 'img/trashcan-icon.png',
@@ -65,20 +69,8 @@
     
     var markers = L.markerClusterGroup();
 	var papier = new L.KML('muenster_papier.kml', {async: true})
-		.on('loaded', function (e) {
-			map.fitBounds(e.target.getBounds());
-		})
 		.addTo(map);
-
-    var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
-    // Control layers
-    L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
-	  L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
-    L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
-
-
+	// L.control.layers({}, {'Papier': papier}, {collapsed: false}).addTo(map);
 </script>
 
 </html>
