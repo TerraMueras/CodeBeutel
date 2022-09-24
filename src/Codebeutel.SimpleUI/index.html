@@ -101,12 +101,16 @@
       goodplaces.addTo(map)
 
       // add layer controls
-      L.control.layers({}, {'Beutelspender': dispenser, 'Mülleimer': trashcans, 'Vorschläge': proposedLocations, 'Neue Meldungen': newLocations,'Giftködermeldungen': poisonArea, 'Hundefreundlich': goodplaces}, {collapsed: false}).addTo(map);
+      let control = L.control.layers({}, {'Beutelspender': dispenser, 'Mülleimer': trashcans, 'Vorschläge': proposedLocations, 'Neue Meldungen': newLocations,'Giftködermeldungen': poisonArea, 'Hundefreundlich': goodplaces}, {collapsed: true}).addTo(map);
 
       // add centering control
       L.easyButton('fa-crosshairs fa-lg', function(btn,map){
           zoomToCurrentPosition();
       }).addTo(map)
+
+      // L.easyButton('fa-bars fa-lg', function(btn,map){
+      //   control.collapse()
+      // }).addTo(map)
 
       // goodplaces demo init
       var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
@@ -129,8 +133,15 @@
 
       // trash containers
       for(let x of trashcanSource["features"]){
-        let xyz = L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconEmpty})
-        .addTo(trashcans)
+        var random_boolean = Math.random() < 0.9;
+        let xyz
+        if (random_boolean){
+          xyz = L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconEmpty})
+          .addTo(trashcans)
+        } else {
+          xyz = L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconFull})
+          .addTo(trashcans)
+        }
         addNavigationPopupToMarker(xyz)
       }
       trashcans.addTo(map)
