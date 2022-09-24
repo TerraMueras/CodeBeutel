@@ -432,6 +432,7 @@ L.Util.extend(L.KML, {
 
 L.KMLIcon = L.Icon.extend({
 	_setIconStyles: function (img, name) {
+
 		L.Icon.prototype._setIconStyles.apply(this, [img, name]);
 		var options = this.options;
 		this.options.popupAnchor = [0,(-0.83*img.height)];
@@ -449,7 +450,7 @@ L.KMLIcon = L.Icon.extend({
 
 L.KMLMarker = L.Marker.extend({
 	options: {
-		icon: new L.KMLIcon.Default,
+		icon: new L.KMLIcon.Default
 	}
 });
 
