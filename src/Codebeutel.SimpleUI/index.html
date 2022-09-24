@@ -197,28 +197,40 @@
     };
     proposedDispenserXHR.send();
  
-    // create proposed / new
+    //create proposed / new
     map.on('contextmenu', function(e){
       var lolPopup = L.popup()
       .setLatLng(e.latlng)
       .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
       .openOn(map);
       document.getElementById('proposeDispender').addEventListener('click', () => {
-        let proposeMarker = L.marker(e.latlng, {icon: trashIconPropsed});
+        let proposeMarker = L.marker(e.latlng, {icon: trashIconProposed});
         proposeMarker.addTo(proposedLocations)
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:8081/newdispenser');
-        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        var proposeRequest = new XMLHttpRequest();
+        proposeRequest.open('POST', 'http://localhost:8081/suggesteddispenser');
+        proposeRequest.setRequestHeader('Content-Type', 'application/json');
         data = {
-          "latitude": e.latlng[0],
-          "longitude": e.latlng[1]
+          latitude: e.latlng['lat'],
+          longitude: e.latlng['lng']
         }
-        xhr.send(data);
+        proposeRequest.send(JSON.stringify(data));
+        console.log('(POST) proposing dispenser at ' + e.latlng['lat'] + ' / ' + e.latlng['lng'])
+
         lolPopup.remove()
       });
       document.getElementById('newDispender').addEventListener('click', () => {
         let dispenderMarker = L.marker(e.latlng, {icon: trashIconNew});
         dispenderMarker.addTo(newLocations);
+        var newRequest = new XMLHttpRequest();
+        newRequest.open('POST', 'http://localhost:8081/newdispenser');
+        newRequest.setRequestHeader('Content-Type', 'application/json');
+        data = {
+          latitude: e.latlng['lat'],
+          longitude: e.latlng['lng']
+        }
+        newRequest.send(JSON.stringify(data));
+        console.log('(POST) new dispenser at ' + e.latlng['lat'] + ' / ' + e.latlng['lng'])
         lolPopup.remove()
       });
     });

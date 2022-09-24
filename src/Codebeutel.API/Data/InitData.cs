@@ -706,8 +706,36 @@ namespace Codebeutel.API.Data
                 Title = "Park",
                 Description = "Dog friendly parks"
             };
-            dbContext.AddRange(new[] { catRestaurant, catPark });
+            var catWorkplace = new Category
+            {
+                Title = "Workplace",
+                Description = "Dog friendly workplaces"
+            };
+            dbContext.AddRange(new[] { catRestaurant, catPark, catWorkplace });
 
+            // Add some dog friendly places
+            var restaurant = new DogFriendlyPlace
+            {
+                Title = "Cafe Med",
+                Category = catRestaurant,
+                Latitude = 51.95203810809916,
+                Longitude = 7.643243517232087,
+            };
+            var park = new DogFriendlyPlace
+            {
+                Title = "Südpark Münster",
+                Category = catPark,
+                Latitude = 51.948397893777766,
+                Longitude = 7.62724192905304,
+            };
+            var swMs = new DogFriendlyPlace
+            {
+                Title = "Stadtwerke Münster",
+                Category = catWorkplace,
+                Latitude = 51.9507298138127,
+                Longitude = 7.638189948808502,
+            };
+            dbContext.AddRange(new[] { restaurant, park, swMs });
 
             dbContext.SaveChanges();
         }
