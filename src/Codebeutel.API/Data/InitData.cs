@@ -695,7 +695,18 @@ namespace Codebeutel.API.Data
             };
             dbContext.Add(dispenserItems75);
 
-
+            // Add categories
+            var catRestaurant = new Category
+            {
+                Title = "Restaurant",
+                Description = "Dog friendly restaurants"
+            };
+            var catPark = new Category
+            {
+                Title = "Park",
+                Description = "Dog friendly parks"
+            };
+            dbContext.AddRange(new[] { catRestaurant, catPark });
 
 
             dbContext.SaveChanges();

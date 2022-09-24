@@ -14,6 +14,8 @@ namespace Codebeutel.API.Data.Models
 
         public string Description { get; set; }
 
+        public bool NotificationSent { get; set; }
+
         [JsonIgnore]
         public bool IsDeleted { get; set; }
 
