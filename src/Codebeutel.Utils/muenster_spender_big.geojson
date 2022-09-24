@@ -1,0 +1,1385 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2022-09-24T07:56:24Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/473852012",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7807085,
+          52.0233965
+        ]
+      },
+      "id": "node/473852012"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1100453079",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.9673135,
+          51.919739
+        ]
+      },
+      "id": "node/1100453079"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1296420996",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5375615,
+          51.8222681
+        ]
+      },
+      "id": "node/1296420996"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1418460842",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4821038,
+          51.9131417
+        ]
+      },
+      "id": "node/1418460842"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1477944867",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4840029,
+          51.8585311
+        ]
+      },
+      "id": "node/1477944867"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1477944878",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4840139,
+          51.860726
+        ]
+      },
+      "id": "node/1477944878"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1477944939",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4860353,
+          51.866136
+        ]
+      },
+      "id": "node/1477944939"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3139352630",
+        "amenity": "vending_machine",
+        "operator": "Stadt Münster",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6735556,
+          51.9018409
+        ]
+      },
+      "id": "node/3139352630"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4187643813",
+        "amenity": "vending_machine",
+        "check_date": "2022-07-04",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7390955,
+          51.7947676
+        ]
+      },
+      "id": "node/4187643813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4876727570",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "name": "Dog-Station",
+        "name:de": "Hundekot-Tüten-Spender",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5972367,
+          52.0025843
+        ]
+      },
+      "id": "node/4876727570"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5022942252",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "mapillary": "7PL5rj28g9EYZOnfkhTIXA",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5589786,
+          51.9916507
+        ]
+      },
+      "id": "node/5022942252"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5473234858",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2021-06-04",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6319488,
+          51.9677888
+        ]
+      },
+      "id": "node/5473234858"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5477739714",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2021-10-24",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6222486,
+          51.967365
+        ]
+      },
+      "id": "node/5477739714"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5626447449",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2021-04-01",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6135879,
+          51.9630744
+        ]
+      },
+      "id": "node/5626447449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5919433298",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7305891,
+          51.8648883
+        ]
+      },
+      "id": "node/5919433298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5919433351",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7378069,
+          51.8633007
+        ]
+      },
+      "id": "node/5919433351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5919433356",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7362137,
+          51.8624423
+        ]
+      },
+      "id": "node/5919433356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6430678987",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2022-06-19",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5937759,
+          51.9432773
+        ]
+      },
+      "id": "node/6430678987"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6582386989",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6283893,
+          51.9833509
+        ]
+      },
+      "id": "node/6582386989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6919912474",
+        "amenity": "vending_machine",
+        "check_date": "2021-10-28",
+        "fee": "no",
+        "payment:none": "yes",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6502996,
+          51.9894884
+        ]
+      },
+      "id": "node/6919912474"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7080055313",
+        "amenity": "vending_machine",
+        "check_date": "2022-03-17",
+        "fee": "no",
+        "payment:none": "yes",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6426973,
+          51.9869773
+        ]
+      },
+      "id": "node/7080055313"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7093266979",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6514338,
+          51.9132509
+        ]
+      },
+      "id": "node/7093266979"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7172219318",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2022-07-08",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6281289,
+          51.9788988
+        ]
+      },
+      "id": "node/7172219318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7172219347",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "check_date": "2022-07-16",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.622224,
+          51.9818168
+        ]
+      },
+      "id": "node/7172219347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7216669616",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7363287,
+          51.7965842
+        ]
+      },
+      "id": "node/7216669616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7294922481",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7939133,
+          51.7596364
+        ]
+      },
+      "id": "node/7294922481"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7294932552",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7922276,
+          51.765255
+        ]
+      },
+      "id": "node/7294932552"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7580180838",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6470378,
+          51.9958917
+        ]
+      },
+      "id": "node/7580180838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7598996927",
+        "access": "yes",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "payment:none": "yes",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3200636,
+          52.0684393
+        ]
+      },
+      "id": "node/7598996927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7611233606",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5420848,
+          51.8202084
+        ]
+      },
+      "id": "node/7611233606"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7632634831",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4844555,
+          51.8619833
+        ]
+      },
+      "id": "node/7632634831"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8069383058",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5894445,
+          51.8166506
+        ]
+      },
+      "id": "node/8069383058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8386762594",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2849287,
+          51.9774842
+        ]
+      },
+      "id": "node/8386762594"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8386762595",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2863469,
+          51.9779028
+        ]
+      },
+      "id": "node/8386762595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8393362386",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2814818,
+          51.9830596
+        ]
+      },
+      "id": "node/8393362386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8397280778",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7455035,
+          51.7974048
+        ]
+      },
+      "id": "node/8397280778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8405460549",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4795398,
+          52.0403453
+        ]
+      },
+      "id": "node/8405460549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8411664882",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5967865,
+          52.0867542
+        ]
+      },
+      "id": "node/8411664882"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858949",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2825259,
+          51.9845374
+        ]
+      },
+      "id": "node/8513858949"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858950",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2904806,
+          51.9832676
+        ]
+      },
+      "id": "node/8513858950"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858951",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.296714,
+          51.9871131
+        ]
+      },
+      "id": "node/8513858951"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858952",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.297862,
+          51.9884775
+        ]
+      },
+      "id": "node/8513858952"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858953",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3036127,
+          51.987645
+        ]
+      },
+      "id": "node/8513858953"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858954",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3007583,
+          51.9854879
+        ]
+      },
+      "id": "node/8513858954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858955",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2965129,
+          51.9827634
+        ]
+      },
+      "id": "node/8513858955"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858956",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2969782,
+          51.9812145
+        ]
+      },
+      "id": "node/8513858956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858957",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2883901,
+          51.9741395
+        ]
+      },
+      "id": "node/8513858957"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858958",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2925847,
+          51.9729332
+        ]
+      },
+      "id": "node/8513858958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858959",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2975727,
+          51.9721017
+        ]
+      },
+      "id": "node/8513858959"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858960",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2946589,
+          51.9691964
+        ]
+      },
+      "id": "node/8513858960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8513858961",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3015042,
+          51.9777112
+        ]
+      },
+      "id": "node/8513858961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8551216867",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.688866,
+          51.8452514
+        ]
+      },
+      "id": "node/8551216867"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8551216967",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6849442,
+          51.842408
+        ]
+      },
+      "id": "node/8551216967"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8592427053",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8796012,
+          51.7693392
+        ]
+      },
+      "id": "node/8592427053"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8625096511",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2918351,
+          51.9675482
+        ]
+      },
+      "id": "node/8625096511"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8625096512",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "name": "Dog excrement bags",
+        "name:de": "Hundekot Tüten Spender",
+        "operator": "Stadt Billerbeck",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2870665,
+          51.9751017
+        ]
+      },
+      "id": "node/8625096512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8892903264",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7348927,
+          51.868012
+        ]
+      },
+      "id": "node/8892903264"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8898578572",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7311195,
+          51.8668018
+        ]
+      },
+      "id": "node/8898578572"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8898578595",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7304992,
+          51.868046
+        ]
+      },
+      "id": "node/8898578595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9027043289",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8296712,
+          51.8458665
+        ]
+      },
+      "id": "node/9027043289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9027043358",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8288598,
+          51.8516541
+        ]
+      },
+      "id": "node/9027043358"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9027043453",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8202741,
+          51.8491341
+        ]
+      },
+      "id": "node/9027043453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9031912805",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8327283,
+          51.8481888
+        ]
+      },
+      "id": "node/9031912805"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9056333229",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6027559,
+          51.9912383
+        ]
+      },
+      "id": "node/9056333229"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9505780342",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.9253892,
+          51.7574698
+        ]
+      },
+      "id": "node/9505780342"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9505780355",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.923576,
+          51.7560117
+        ]
+      },
+      "id": "node/9505780355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9505780381",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8765126,
+          51.7564587
+        ]
+      },
+      "id": "node/9505780381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9597908877",
+        "amenity": "vending_machine",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8834428,
+          51.7717612
+        ]
+      },
+      "id": "node/9597908877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9649069483",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6218195,
+          51.962276
+        ]
+      },
+      "id": "node/9649069483"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9649069484",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6220172,
+          51.9611105
+        ]
+      },
+      "id": "node/9649069484"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9651629093",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6147248,
+          51.9604114
+        ]
+      },
+      "id": "node/9651629093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9667468721",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6643521,
+          51.9697346
+        ]
+      },
+      "id": "node/9667468721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9687474336",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6017782,
+          52.0030925
+        ]
+      },
+      "id": "node/9687474336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9982481746",
+        "amenity": "vending_machine",
+        "bin": "yes",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6300162,
+          52.0884454
+        ]
+      },
+      "id": "node/9982481746"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9982481747",
+        "amenity": "vending_machine",
+        "bin": "no",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6266363,
+          52.0895555
+        ]
+      },
+      "id": "node/9982481747"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9982481748",
+        "amenity": "vending_machine",
+        "fee": "no",
+        "vending": "excrement_bags"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6177222,
+          52.0826156
+        ]
+      },
+      "id": "node/9982481748"
+    }
+  ]
+}
