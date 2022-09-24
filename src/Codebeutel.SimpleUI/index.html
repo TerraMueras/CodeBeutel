@@ -65,6 +65,13 @@
             }, error, options);
             })});
     }
+
+    function createUUID() {
+   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+   });
+}
     // init map
     var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
 
@@ -141,6 +148,24 @@
               }
               addNavigationPopupToMarker(marker)
               marker.addTo(dispenser);
+            }
+        }
+    };
+    xhr.send();
+
+    // new dispenser
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:8081/newdispenser');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      console.log(xhr.response)
+      if (xhr.status === 200) {
+            for (x of JSON.parse(xhr.response)){
+              // console.log(x)
+              let marker = null
+              marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconNew})
+              addNavigationPopupToMarker(marker)
+              marker.addTo(newLocations);
             }
         }
     };
