@@ -113,6 +113,24 @@
         popupAnchor:  [-3, -76] 
       });
 
+      var trashIconEmpty = L.icon({
+        iconUrl: './img/marker_shitbag_empty.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var trashIconFull = L.icon({
+        iconUrl: './img/marker_shitbag_full.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
       L.Marker.prototype.options.icon = redIcon
 
       
@@ -158,7 +176,11 @@
             // console.log(xhr.response, typeof(xhr.response),JSON.parse(xhr.response))
             for (x of JSON.parse(xhr.response)){
               console.log(x)
-              marker = new L.Marker([x.latitude, x.longitude])
+              if (x.isEmpty){
+                marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconEmpty})
+              } else {
+                marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconFull})
+              }
               marker.addTo(spender)
             }
         }
