@@ -100,7 +100,7 @@ const trashcanIcon = L.icon({
       popupAnchor:  [17, -33] 
     });
 
-    const trashIconPropsed = L.icon({
+    const trashIconProposed = L.icon({
       iconUrl: './img/marker_shitbag_proposed.png',
       iconSize:     [50, 82],
       shadowSize:   [0, 0],
