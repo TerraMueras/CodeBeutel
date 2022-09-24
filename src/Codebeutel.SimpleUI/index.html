@@ -105,7 +105,8 @@
 
       // add centering control
       L.easyButton('fa-crosshairs fa-lg', function(btn,map){
-          zoomToCurrentPosition();
+          // zoomToCurrentPosition();
+          map.setView([51.951253965562884, 7.638065532064817], 18)
       }).addTo(map)
 
       // L.easyButton('fa-bars fa-lg', function(btn,map){
