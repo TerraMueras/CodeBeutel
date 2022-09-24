@@ -28,8 +28,10 @@
     <script src="./js/jquery.js"></script>
     <script src="./js/leaflet.markercluster.js"></script>
     <script src="./js/currentLocation.js"></script>
+    <script src="./js/markers.js"></script>
     <script src="./js/kml.js"></script>
     <script src="./js/poisonAreaLocations.js"></script>
+    <script src="./muenster_papier.js"></script>
 
     <title>JovelDogs 🐶</title>
   </head>
@@ -47,139 +49,63 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script> 
-      var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
 
 
-  
+      function addNavigationPopupToMarker(marker) {
+      marker.bindPopup("<button id='navigation' type='button' class='btn btn-primary'>Navigation starten</button>");
+          marker.on('click', (e) => {
+            document.getElementById('navigation').addEventListener('click', () => {
+            navigator.geolocation.getCurrentPosition((pos) => {
+            const crd = pos.coords;
+            let currentPos = [crd.latitude, crd.longitude];
+            let markerLatLng = e.latlng;
+              
+            window.open('https://google.com/maps/dir/' + crd.latitude +',' + crd.longitude
+              + '/' + markerLatLng['lat'] + ',' + markerLatLng['lng']);
+            }, error, options);
+            })});
+    }
+    // init map
+    var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
 
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap'
       }).addTo(map);
   
-      zoomToCurrentPosition();
+    // init zoom
+     zoomToCurrentPosition();
   
-      var myIcon = L.icon({
-      iconUrl: 'img/trashcan-icon.png',
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      shadowSize: [68, 95],
-      shadowAnchor: [22, 94]
-      });
-  
-      var orangeIcon = L.icon({
-      iconUrl: './img/marker_orange.png',
-      iconSize:     [25, 41], // size of the icon
-      shadowSize:   [0, 0], // size of the shadow
-      iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-      });
-  
-      var redIcon = L.icon({
-        iconUrl: './img/marker_red.png',
-  
-        iconSize:     [25, 41],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62], 
-        popupAnchor:  [-3, -76]
-      });
-  
-      var greenIcon = L.icon({
-        iconUrl: './img/marker_green.png',
-        iconSize:     [25, 41],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIcon = L.icon({
-        iconUrl: './img/marker_shitbag.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIconEmpty = L.icon({
-        iconUrl: './img/marker_shitbag_empty.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIconFull = L.icon({
-        iconUrl: './img/marker_shitbag_full.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIconBroken = L.icon({
-        iconUrl: './img/marker_shitbag_broken.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIconNew = L.icon({
-        iconUrl: './img/marker_shitbag_new.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var trashIconPropsed = L.icon({
-        iconUrl: './img/marker_shitbag_proposed.png',
-        iconSize:     [50, 82],
-        shadowSize:   [0, 0],
-        iconAnchor:   [12, 41],
-        shadowAnchor: [4, 62],  
-        popupAnchor:  [-3, -76] 
-      });
-
-      var poisonIcon = L.icon({
-        iconUrl: './img/poison.png',
-        iconSize:     [50, 50],
-        shadowSize:   [0, 0],
-        iconAnchor:   [25, 25],
-        shadowAnchor: [0, 0],  
-        popupAnchor:  [-3, -76] 
-      });
-
-
-      L.Marker.prototype.options.icon = redIcon
-
-
-
-      
-      
-      var doggyplaces = L.layerGroup()
-      doggyplaces.addTo(map)
-  
-      // demo, do this for each API GET
-      var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
-      var polygon = L.polygon(somepoly, {color: 'green'})
-      doggyplaces.addLayer(polygon)
-  
-      // get from API, foreach API GET
-      var spender = L.layerGroup()
+     // init layer groups
+      var dispenser = L.layerGroup()
+      var trashcans = L.layerGroup()
       var proposedLocations = L.layerGroup()
       var newLocations = L.layerGroup()
       var poisonArea = L.layerGroup()
+      var goodplaces = L.layerGroup()
 
+      // add layer groups to map
+      dispenser.addTo(map)
+      trashcans.addTo(map)
+      proposedLocations.addTo(map)
+      newLocations.addTo(map)
+      poisonArea.addTo(map)
+      goodplaces.addTo(map)
+
+      // add layer controls
+      L.control.layers({}, {'Beutelspender': dispenser, 'Mülleimer': trashcans, 'Vorschläge': proposedLocations, 'Neue Meldungen': newLocations,'Giftködermeldungen': poisonArea, 'Hundefreundlich': goodplaces}, {collapsed: false}).addTo(map);
+
+      // add centering control
+      L.easyButton('fa-crosshairs fa-lg', function(btn,map){
+          zoomToCurrentPosition();
+      }).addTo(map)
+
+      // goodplaces demo init
+      var somepoly = [[51.95748938408167, 7.620743956523741], [51.95721822696242, 7.6223067616602975], [51.95654500219662, 7.620812234418057], [51.95632139063837, 7.621124840029503], [51.956067573139435, 7.620357257198151]];
+      var polygon = L.polygon(somepoly, {color: 'green'})
+      goodplaces.addLayer(polygon)
+
+      // poisonArea demo init
       for (poisonAreaLocation of poisonAreaLocations){
         circleMarker = L.circleMarker([poisonAreaLocation.lat, poisonAreaLocation.lon], {radius: 30, color: 'green'})
         circleMarker.addTo(poisonArea)
@@ -187,39 +113,25 @@
         poisonAreaMarker.addTo(poisonArea) 
       }
 
-      poisonArea.addTo(map)
+      // trash containers
+      for(let x of trashcanSource["features"]){
+        L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconEmpty})
+        .addTo(trashcans)
+      }
+      trashcans.addTo(map)
 
-      // geojson imports
+      // dispenser
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'muenster_spender.geojson');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-        L.geoJSON(JSON.parse(xhr.responseText), 
-        {
-            pointToLayer: function(feature, latlng) {
-                return L.marker(latlng, {icon: trashIcon})
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup()
-            }
-        }
-        )
-        .addTo(map)
-        }
-    };
-    xhr.send();
-
-       var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8081/dispenser');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function() {
         if (xhr.status === 200) {
             // console.log(xhr.response, typeof(xhr.response),JSON.parse(xhr.response))
             for (x of JSON.parse(xhr.response)){
-              console.log(x)
-              if (!x.isDefect) {
+              // console.log(x)
+              let marker = null
+              if (x.isDefect) {
                 marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconBroken})
-              marker.bindPopup("<button id='navigation' type='button' class='btn btn-primary'>Navigation starten</button>")
               } else {
                 if (x.isEmpty){
                   marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconEmpty})
@@ -227,70 +139,30 @@
                   marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconFull})
                 }
               }
-              marker.bindPopup("<button id='navigation' type='button' class='btn btn-primary'>Navigation starten</button>")
-              marker.on('click', (e) => {
-                document.getElementById('navigation').addEventListener('click', () => {
-                navigator.geolocation.getCurrentPosition((pos) => {
-                const crd = pos.coords;
-                let currentPos = [crd.latitude, crd.longitude];
-                let markerLatLng = e.latlng;
-                  
-                window.open('https://google.com/maps/dir/' + crd.latitude +',' + crd.longitude
-                 + '/' + markerLatLng['lat'] + ',' + markerLatLng['lng']);
-                }, error, options);
-                });
-              })
-
-
-              marker.addTo(spender);
-
+              addNavigationPopupToMarker(marker)
+              marker.addTo(dispenser);
             }
         }
-        // L.geoJSON(JSON.parse(xhr.responseText), 
-        // {
-        //     pointToLayer: function(feature, latlng) {
-        //         return L.marker(latlng, {icon: trashIcon})
-        //     }
-        // }
-        // ).addTo(map);
-        // }
     };
     xhr.send();
-    spender.addTo(map)
-
-    var papier = new L.KML('muenster_papier.kml', {async: true}).addTo(map);
-    //   var spender = new L.KML('muenster_spender.kml', {async: true}).addTo(map)
-      
-      // Control layers
-      L.control.layers({}, {'Mülleimer': papier}, {collapsed: false}).addTo(map);
-      L.control.layers({}, {'Hundefreundlich': doggyplaces}, {collapsed: false}).addTo(map);
-      L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
-      L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
-      L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
-      L.control.layers({}, {'Giftködermeldungen': poisonArea}, {collapsed: false}).addTo(map);
-
-
-
-      L.easyButton('fa-crosshairs fa-lg', function(btn,map){
-          zoomToCurrentPosition();
-      }).addTo(map)
-  
-      map.on('contextmenu', function(e){
-        var lolPopup = L.popup()
-        .setLatLng(e.latlng)
-        .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
-        .openOn(map);
-        document.getElementById('proposeDispender').addEventListener('click', () => {
-          let proposeMarker = L.marker(e.latlng, {icon: orangeIcon});
-          proposeMarker.addTo(proposedLocations)
-          lolPopup.remove()
-        });
-        document.getElementById('newDispender').addEventListener('click', () => {
-          let dispenderMarker = L.marker(e.latlng, {icon: greenIcon});
-          dispenderMarker.addTo(newLocations);
-          lolPopup.remove()
-        });
+ 
+    // create proposed / new
+    map.on('contextmenu', function(e){
+      var lolPopup = L.popup()
+      .setLatLng(e.latlng)
+      .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
+      .openOn(map);
+      document.getElementById('proposeDispender').addEventListener('click', () => {
+        let proposeMarker = L.marker(e.latlng, {icon: orangeIcon});
+        proposeMarker.addTo(proposedLocations)
+        lolPopup.remove()
       });
+      document.getElementById('newDispender').addEventListener('click', () => {
+        let dispenderMarker = L.marker(e.latlng, {icon: greenIcon});
+        dispenderMarker.addTo(newLocations);
+        lolPopup.remove()
+      });
+    });
   
   
   </script>

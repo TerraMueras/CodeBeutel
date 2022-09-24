@@ -1,4 +1,4 @@
-{
+const trashcanSource = {
 "type": "FeatureCollection",
 "name": "Papierkorb",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
