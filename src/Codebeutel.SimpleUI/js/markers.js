@@ -117,3 +117,12 @@ const trashcanIcon = L.icon({
       shadowAnchor: [0, 0],  
       popupAnchor:  [-3, -76] 
     });
+
+    const happyDogIcon = L.icon({
+        iconUrl: './img/happy.png',
+        iconSize:     [50, 50],
+        shadowSize:   [0, 0],
+        iconAnchor:   [25, 30],
+        shadowAnchor: [0, 0],  
+        popupAnchor:  [-3, -76] 
+      });

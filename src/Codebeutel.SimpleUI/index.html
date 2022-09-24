@@ -33,11 +33,12 @@
     <script src="./js/poisonAreaLocations.js"></script>
     <script src="./muenster_papier.js"></script>
 
-    <title>JovelDogs 🐶</title>
+    <title>JovelDogs</title>
   </head>
   <body>
     <div style="text-align:center">
-      <h1>JovelDogs 🐶</h1>
+      <!-- <h1>JovelDogs 🐶</h1> -->
+      <img src="img/logo_joveldogs.png">
     </div>
     
     <div id="map"></div>
@@ -73,7 +74,7 @@
    });
 }
     // init map
-    var map = L.map('map').setView([51.962254926733266, 7.6283756380886265], 13);
+    var map = L.map('map').setView([51.951253965562884, 7.638065532064817], 18);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -81,7 +82,7 @@
       }).addTo(map);
   
     // init zoom
-     zoomToCurrentPosition();
+    //  zoomToCurrentPosition();
   
      // init layer groups
       var dispenser = L.layerGroup()
@@ -112,6 +113,12 @@
       var polygon = L.polygon(somepoly, {color: 'green'})
       goodplaces.addLayer(polygon)
 
+      var someotherpoly = [[51.95188527056991, 7.652207907631106],[51.95140625072421, 7.652392959517279],[51.95163435605083, 7.654650592528573],[51.95332229940493, 7.654502551019635]]
+      var polygon2 = L.polygon(someotherpoly, {color: 'green'})
+      goodplaces.addLayer(polygon2)
+      var happy1 = new L.marker([51.95190808091111, 7.6536513123432455], {icon: happyDogIcon})
+      happy1.addTo(goodplaces)
+
       // poisonArea demo init
       for (poisonAreaLocation of poisonAreaLocations){
         circleMarker = L.circle([poisonAreaLocation.lat, poisonAreaLocation.lon], {radius: 30, color: 'green'})
@@ -122,8 +129,9 @@
 
       // trash containers
       for(let x of trashcanSource["features"]){
-        L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconEmpty})
+        let xyz = L.marker([x["geometry"]["coordinates"][1],x["geometry"]["coordinates"][0]], {icon: trashcanIconEmpty})
         .addTo(trashcans)
+        addNavigationPopupToMarker(xyz)
       }
       trashcans.addTo(map)
 
@@ -190,30 +198,30 @@
     proposedDispenserXHR.send();
  
     // create proposed / new
-    // map.on('contextmenu', function(e){
-    //   var lolPopup = L.popup()
-    //   .setLatLng(e.latlng)
-    //   .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
-    //   .openOn(map);
-    //   document.getElementById('proposeDispender').addEventListener('click', () => {
-    //     let proposeMarker = L.marker(e.latlng, {icon: trashIconPropsed});
-    //     proposeMarker.addTo(proposedLocations)
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', 'http://localhost:8081/newdispenser');
-    //     xhr.setRequestHeader('Content-Type', 'application/json');
-    //     data = {
-    //       "latitude": e.latlng[0],
-    //       "longitude": e.latlng[1]
-    //     }
-    //     xhr.send(data);
-    //     lolPopup.remove()
-    //   });
-    //   document.getElementById('newDispender').addEventListener('click', () => {
-    //     let dispenderMarker = L.marker(e.latlng, {icon: trashIconNew});
-    //     dispenderMarker.addTo(newLocations);
-    //     lolPopup.remove()
-    //   });
-    // });
+    map.on('contextmenu', function(e){
+      var lolPopup = L.popup()
+      .setLatLng(e.latlng)
+      .setContent("<div id='creationPopup'><div id='proposeDispenserContainer'><button id='proposeDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-user-plus'></i> Spender vorschlagen </button> </div><div id='newDispenserContainer'><button id='newDispender' type='button' class='btn btn-primary'><i class='fa fa-lg fa-question'></i> Neuen Spender anlegen </button></div>")
+      .openOn(map);
+      document.getElementById('proposeDispender').addEventListener('click', () => {
+        let proposeMarker = L.marker(e.latlng, {icon: trashIconPropsed});
+        proposeMarker.addTo(proposedLocations)
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8081/newdispenser');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        data = {
+          "latitude": e.latlng[0],
+          "longitude": e.latlng[1]
+        }
+        xhr.send(data);
+        lolPopup.remove()
+      });
+      document.getElementById('newDispender').addEventListener('click', () => {
+        let dispenderMarker = L.marker(e.latlng, {icon: trashIconNew});
+        dispenderMarker.addTo(newLocations);
+        lolPopup.remove()
+      });
+    });
   
   
   </script>
