@@ -170,6 +170,24 @@
         }
     };
     xhr.send();
+
+        // new dispenser
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:8081/suggesteddispenser');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      console.log(xhr.response)
+      if (xhr.status === 200) {
+            for (x of JSON.parse(xhr.response)){
+              // console.log(x)
+              let marker = null
+              marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconPropsed})
+              addNavigationPopupToMarker(marker)
+              marker.addTo(newLocations);
+            }
+        }
+    };
+    xhr.send();
  
     // create proposed / new
     map.on('contextmenu', function(e){
@@ -180,6 +198,14 @@
       document.getElementById('proposeDispender').addEventListener('click', () => {
         let proposeMarker = L.marker(e.latlng, {icon: orangeIcon});
         proposeMarker.addTo(proposedLocations)
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8081/newdispenser');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        data = {
+          "latitude": e.latlng[0],
+          "longitude": e.latlng[1]
+        }
+        xhr.send(data);
         lolPopup.remove()
       });
       document.getElementById('newDispender').addEventListener('click', () => {
