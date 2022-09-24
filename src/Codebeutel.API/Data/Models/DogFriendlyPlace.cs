@@ -1,14 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codebeutel.API.Data.Models
 {
     public class DogFriendlyPlace
     {
         public int Id { get; set; }
+
+        [Required]
         public double Latitude { get; set; }
+        [Required]
         public double Longitude { get; set; }
         public string Description { get; set; }
+        [Required]
         public Category Category { get; set; }
 
     }
