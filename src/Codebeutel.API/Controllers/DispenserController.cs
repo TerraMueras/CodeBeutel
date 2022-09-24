@@ -67,7 +67,8 @@ public class DispenserController : ControllerBase
 
         if (dispenser.Reports.Count() == 5)
         {
-            // Send report to Stadtwerke
+            dispenser.IsDefect = true;
+            _context.Update(dispenser);
         }
 
         var report = new Report() { DispenserId = id };
