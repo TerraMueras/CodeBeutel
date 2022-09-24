@@ -29,6 +29,7 @@
     <script src="./js/leaflet.markercluster.js"></script>
     <script src="./js/currentLocation.js"></script>
     <script src="./js/kml.js"></script>
+    <script src="./js/poisonAreaLocations.js"></script>
 
     <title>JovelDogs 🐶</title>
   </head>
@@ -104,7 +105,64 @@
         popupAnchor:  [-3, -76] 
       });
 
+      var trashIconEmpty = L.icon({
+        iconUrl: './img/marker_shitbag_empty.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var trashIconFull = L.icon({
+        iconUrl: './img/marker_shitbag_full.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var trashIconBroken = L.icon({
+        iconUrl: './img/marker_shitbag_broken.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var trashIconNew = L.icon({
+        iconUrl: './img/marker_shitbag_new.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var trashIconPropsed = L.icon({
+        iconUrl: './img/marker_shitbag_proposed.png',
+        iconSize:     [50, 82],
+        shadowSize:   [0, 0],
+        iconAnchor:   [12, 41],
+        shadowAnchor: [4, 62],  
+        popupAnchor:  [-3, -76] 
+      });
+
+      var poisonIcon = L.icon({
+        iconUrl: './img/poison.png',
+        iconSize:     [50, 50],
+        shadowSize:   [0, 0],
+        iconAnchor:   [25, 25],
+        shadowAnchor: [0, 0],  
+        popupAnchor:  [-3, -76] 
+      });
+
+
       L.Marker.prototype.options.icon = redIcon
+
+
 
       
       
@@ -120,7 +178,17 @@
       var spender = L.layerGroup()
       var proposedLocations = L.layerGroup()
       var newLocations = L.layerGroup()
-  
+      var poisonArea = L.layerGroup()
+
+      for (poisonAreaLocation of poisonAreaLocations){
+        circleMarker = L.circleMarker([poisonAreaLocation.lat, poisonAreaLocation.lon], {radius: 30, color: 'green'})
+        circleMarker.addTo(poisonArea)
+        poisonAreaMarker = new L.Marker([poisonAreaLocation.lat, poisonAreaLocation.lon], {icon: poisonIcon})
+        poisonAreaMarker.addTo(poisonArea) 
+      }
+
+      poisonArea.addTo(map)
+
       // geojson imports
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'muenster_spender.geojson');
@@ -149,10 +217,17 @@
             // console.log(xhr.response, typeof(xhr.response),JSON.parse(xhr.response))
             for (x of JSON.parse(xhr.response)){
               console.log(x)
-              marker = new L.Marker([x.latitude, x.longitude])
+              if (!x.isDefect) {
+                marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconBroken})
               marker.bindPopup("<button id='navigation' type='button' class='btn btn-primary'>Navigation starten</button>")
-              marker.addTo(spender)
-
+              } else {
+                if (x.isEmpty){
+                  marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconEmpty})
+                } else {
+                  marker = new L.Marker([x.latitude, x.longitude], {icon: trashIconFull})
+                }
+              }
+              marker.bindPopup("<button id='navigation' type='button' class='btn btn-primary'>Navigation starten</button>")
               marker.on('click', (e) => {
                 document.getElementById('navigation').addEventListener('click', () => {
                 navigator.geolocation.getCurrentPosition((pos) => {
@@ -165,6 +240,10 @@
                 }, error, options);
                 });
               })
+
+
+              marker.addTo(spender);
+
             }
         }
         // L.geoJSON(JSON.parse(xhr.responseText), 
@@ -188,7 +267,8 @@
       L.control.layers({}, {'Beutelspender': spender}, {collapsed: false}).addTo(map);
       L.control.layers({}, {'Neue Meldungen': newLocations}, {collapsed: false}).addTo(map);
       L.control.layers({}, {'Vorschläge': proposedLocations}, {collapsed: false}).addTo(map);
-  
+      L.control.layers({}, {'Giftködermeldungen': poisonArea}, {collapsed: false}).addTo(map);
+
 
 
       L.easyButton('fa-crosshairs fa-lg', function(btn,map){
