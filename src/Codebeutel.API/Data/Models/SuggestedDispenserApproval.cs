@@ -7,7 +7,7 @@ namespace Codebeutel.API.Data.Models
         public int Id { get; set; }
 
         [ForeignKey("SuggestedDispenser")]
-        public int SuggestedDispensersId { get; set; }
+        public int SuggestedDispenserId { get; set; }
 
     }
 }
